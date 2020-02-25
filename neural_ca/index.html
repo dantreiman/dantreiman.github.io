@@ -115,8 +115,11 @@
         canvas.style.height = `${h*SCALE}px`;
 
         canvas.onmousedown = e=>{
-            const x = Math.floor(e.clientX/SCALE);
-            const y = Math.floor(e.clientY/SCALE);
+            const rect = canvas.getBoundingClientRect();
+            const cx = e.clientX - rect.left;
+            const cy = e.clientY - rect.top;
+            const x = Math.floor(cx/SCALE);
+            const y = Math.floor(cy/SCALE);
             if (e.buttons == 1) {
                 if (e.shiftKey) {
                     plantSeed(x, y);
@@ -126,8 +129,11 @@
             }
         }
         canvas.onmousemove = e=>{
-            const x = Math.floor(e.clientX/SCALE);
-            const y = Math.floor(e.clientY/SCALE);
+            const rect = canvas.getBoundingClientRect();
+            const cx = e.clientX - rect.left;
+            const cy = e.clientY - rect.top;
+            const x = Math.floor(cx/SCALE);
+            const y = Math.floor(cy/SCALE);
             if (e.buttons == 1 && !e.shiftKey) {
                 damage(x, y, DR);  // x, y, radius
             }
