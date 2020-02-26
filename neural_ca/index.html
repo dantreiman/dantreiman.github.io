@@ -115,32 +115,41 @@
         canvas.style.height = `${h*SCALE}px`;
 
         canvas.ontouchstart = e=>{
-            const rect = canvas.getBoundingClientRect();
             if (e.touches.length == 1) {
-                const t = e.touches[0]
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const t = e.touches[0];
                 const cx = t.clientX - rect.left;
                 const cy = t.clientY - rect.top;
                 const x = Math.floor(cx/SCALE);
                 const y = Math.floor(cy/SCALE);
                 damage(x, y, DR);
-            } else {
-                const t = e.touches[1]
+            }
+        }
+
+        canvas.ontouchmove = e=>{
+            if (e.touches.length == 1) {
+                e.preventDefault()
+                const rect = canvas.getBoundingClientRect();
+                const t = e.touches[0]
+                const cx = t.clientX - rect.left;
+                const cy = t.clientY - rect.top;
+                const x = Math.floor(cx / SCALE);
+                const y = Math.floor(cy / SCALE);
+                damage(x, y, DR);
+            }
+        }
+
+        canvas.ontouchend = e=>{
+            if (e.touches.length == 1) {
+                e.preventDefault();
+                const t = e.touches[0];
                 const cx = t.clientX - rect.left;
                 const cy = t.clientY - rect.top;
                 const x = Math.floor(cx/SCALE);
                 const y = Math.floor(cy/SCALE);
                 plantSeed(x, y);
             }
-        }
-
-        canvas.ontouchmove = e=>{
-            const rect = canvas.getBoundingClientRect();
-            const t = e.touches[0]
-            const cx = t.clientX - rect.left;
-            const cy = t.clientY - rect.top;
-            const x = Math.floor(cx/SCALE);
-            const y = Math.floor(cy/SCALE);
-            damage(x, y, DR);
         }
 
         canvas.onmousedown = e=>{
