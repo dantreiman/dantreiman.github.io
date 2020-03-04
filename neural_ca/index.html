@@ -12,7 +12,7 @@
 <script src="https://unpkg.com/@tensorflow/tfjs-converter@latest/dist/tf-converter.js"></script>
 <script src="https://unpkg.com/@tensorflow/tfjs-backend-wasm@latest/dist/tf-backend-wasm.js"></script>
 
-<canvas id='canvas' style="border: 1px solid black; image-rendering: smooth;"></canvas>
+<canvas id='canvas' style="border: 1px solid black; image-rendering: pixelated;"></canvas>
 
 <p>Click to destroy</p>
 <p>Shift-click to create</p>
@@ -71,7 +71,7 @@
 
         // const D = 64 + (16 * 2);
         const DR = 16;    // Damage radius
-        const P = 128;     // Padding Size
+        const P = 256;     // Padding Size
         const H = 90+P;   // Height
         const W = 160+P;  // Width
         const SCALE = 4;
