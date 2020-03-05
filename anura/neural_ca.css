@@ -61,3 +61,12 @@ img {
 p {
     color: white;
 }
+
+p > a {
+    color: hsla(210, 100%, 75%, 1.0);
+}
+
+
+p > a:visited {
+    color: hsla(210, 100%, 75%, 1.0);
+}
