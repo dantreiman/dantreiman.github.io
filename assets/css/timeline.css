@@ -3,4 +3,5 @@
 svg.timeline-chart {
     display: block;
     margin: auto;
+    /*mix-blend-mode: multiply;*/
 }
