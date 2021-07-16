@@ -12,15 +12,16 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Machine Learning',      6],
-                ['Software Engineering',  4],
-                ['Software Architecture', 2],
-                ['R&D',                   2],
-                ['Tool Development',      2]
+                ['Machine Learning',      5],
+                ['Software Engineering',  5],
+                ['System Architecture',   3],
+                ['Applied Math',          3],
+                ['Tool Development',      3]
             ]);
 
             var options = {
                 legend: 'none',
+                pieSliceText: 'label',
                 pieHole: 0.4,
                 slices: {
                     0: { color: '#84bbe2' },  // Sky blue
@@ -29,12 +30,22 @@
                     3: { color: '#5c59a2' },  // Violet
                     4: { color: '#d3ccc3' },  // Med gray
                 },
-                chartArea: { left:0, top:0, width:'100%',height:'100%'}
+                chartArea: {
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    bottom: 16,
+                    width:'100%',
+                    height:'100%'
+                },
+                height: '600px',
+                width: '100%',
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
             chart.draw(data, options);
         }
+        window.addEventListener('resize', drawChart, false);
     </script>
 
     <!-- Projects Tree Map -->
@@ -43,48 +54,33 @@
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
-                ['Global',    null,                 0,                               0],
-                ['America',   'Global',             0,                               0],
-                ['Europe',    'Global',             0,                               0],
-                ['Asia',      'Global',             0,                               0],
-                ['Australia', 'Global',             0,                               0],
-                ['Africa',    'Global',             0,                               0],
-                ['Brazil',    'America',            11,                              10],
-                ['USA',       'America',            52,                              31],
-                ['Mexico',    'America',            24,                              12],
-                ['Canada',    'America',            16,                              -23],
-                ['France',    'Europe',             42,                              -11],
-                ['Germany',   'Europe',             31,                              -2],
-                ['Sweden',    'Europe',             22,                              -13],
-                ['Italy',     'Europe',             17,                              4],
-                ['UK',        'Europe',             21,                              -5],
-                ['China',     'Asia',               36,                              4],
-                ['Japan',     'Asia',               20,                              -12],
-                ['India',     'Asia',               40,                              63],
-                ['Laos',      'Asia',               4,                               34],
-                ['Mongolia',  'Asia',               1,                               -5],
-                ['Israel',    'Asia',               12,                              24],
-                ['Iran',      'Asia',               18,                              13],
-                ['Pakistan',  'Asia',               11,                              -52],
-                ['Egypt',     'Africa',             21,                              0],
-                ['S. Africa', 'Africa',             30,                              43],
-                ['Sudan',     'Africa',             12,                              2],
-                ['Congo',     'Africa',             10,                              12],
-                ['Zaire',     'Africa',             8,                               10]
+                ['Project', 'Parent', 'Size', 'Market increase/decrease (color)'],
+                ['Projects',             null,             0,                         0],
+                ['Kardia AI',            'Projects',       10,                        1],
+                ['Style Transfer',       'Projects',       8,                         0.5],
+                ['Video Creation',       'Projects',       8,                         0],
+                ['Feature Inversion',    'Projects',       4,                         0],
+                ['ARC',                  'Projects',       4,                         0],
+                ['Cellular Automata',    'Projects',       4,                         0],
+                ['SmoothLife',           'Cellular Automata',       4,                0],
+                ['Shadertoy',            'Cellular Automata',       4,                0],
+                ['Neural CA',            'Cellular Automata',       4,                0],
             ]);
 
             tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
 
             tree.draw(data, {
-                minColor: '#f00',
-                midColor: '#ddd',
-                maxColor: '#0d0',
+                minColor: '#ddd',
+                midColor: '#006fff',
+                maxColor: '#60ba46',
                 headerHeight: 15,
                 fontColor: 'black',
-                showScale: true
+                showScale: false,
+                textStyle: {
+                    color: '#ffffff',
+                    bold: false,
+                },
             });
-
         }
     </script>
 
@@ -159,7 +155,7 @@
                 <h2 class="text-center">Skills</h2>
 
                 <!-- Skills Donut Chart -->
-                <div id="donutchart" style="width: 100%; height: 100%;"></div>
+                <div id="donutchart" style="width: 100%; height: 400px;"></div>
 
             </div>
             <div class="col-12 col-md-5 col-lg-4" data-aos="fade-up">
@@ -206,8 +202,33 @@
 
             <!--            Years: 2002 to 2021  (19 years)  -->
 <!--            apx. 15 height units per year    -->
-<!--            h = 296 - (y - 2002) * 15        -->
+<!--            h = 296 - (y - 2002) * 16.6        -->
             <svg class="timeline-chart" width="420" height="1260" viewBox="0 0 100 300" aria-labelledby="title desc" role="img">
+                <!-- Timeline -->
+                <g class="bar">
+                    <rect x="48" y="0" width="0.3" height="1260" fill="#0c0c0c" fill-opacity="1.0"></rect> <!-- vertical -->
+                    <rect x="44" y="294" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2003 start -->
+                    <rect x="44" y="277.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2004 -->
+                    <rect x="44" y="260.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2005 -->
+                    <rect x="44" y="244" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2006 -->
+                    <rect x="44" y="227.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2008 -->
+                    <rect x="44" y="210.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2009 -->
+                    <rect x="44" y="194" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2010 -->
+                    <rect x="44" y="177.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2011 -->
+                    <rect x="44" y="160.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2012 -->
+                    <rect x="44" y="144" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2013 -->
+                    <rect x="44" y="127.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2014 -->
+                    <rect x="44" y="110.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2015 -->
+                    <rect x="44" y="94" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2016 -->
+                    <rect x="44" y="77.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2017 -->
+                    <rect x="44" y="60.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2018 -->
+                    <rect x="44" y="44" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2019 -->
+                    <rect x="44" y="27.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2020 -->
+                    <text x="56" y="27.5" font-size="0.3em" dy=".25em">2020</text>
+                    <rect x="44" y="10.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2021 -->
+                </g>
+
+
                 <!-- Work Resume -->
                 <g class="bar">
                     <rect x="0" y="32" width="46" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>
