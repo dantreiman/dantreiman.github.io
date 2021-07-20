@@ -1,0 +1,8 @@
+.light-dark-toggle {
+    padding: 0;
+    border: none;
+    width: 2em;
+    height: 2em;
+    background: url("/assets/img/icons/brightness_6_black_24dp.svg") center no-repeat;
+}
+

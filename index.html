@@ -40,6 +40,12 @@
                 },
                 height: '600px',
                 width: '100%',
+                pieSliceTextStyle: {
+                    color: '#ffffff',
+                    bold: false,
+                    fontName: 'Helvetica Neue Light',
+                    fontSize: 12,
+                },
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -54,32 +60,77 @@
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Project', 'Parent', 'Size', 'Market increase/decrease (color)'],
-                ['Projects',             null,             0,                         0],
-                ['Kardia AI',            'Projects',       10,                        1],
-                ['Style Transfer',       'Projects',       8,                         0.5],
-                ['Video Creation',       'Projects',       8,                         0],
-                ['Feature Inversion',    'Projects',       4,                         0],
-                ['ARC',                  'Projects',       4,                         0],
-                ['Cellular Automata',    'Projects',       4,                         0],
-                ['SmoothLife',           'Cellular Automata',       4,                0],
-                ['Shadertoy',            'Cellular Automata',       4,                0],
-                ['Neural CA',            'Cellular Automata',       4,                0],
+                ['Project',              'Parent',                 'Size',  'Score (color)',    'URL'],
+                ['Projects',             null,                      0,       1,                 './index-backup.html'],
+                ['Kardia AI',            'Projects',                10,      4,                 './index-backup.html'],
+                ['Style Transfer',       'Projects',                8,       2,                 './index-backup.html'],
+                ['Video Creation',       'Projects',                8,       2,                 './index-backup.html'],
+                ['Feature Inversion',    'Projects',                4,       1,                 './index-backup.html'],
+                ['ARC',                  'Projects',                4,       1,                 './index-backup.html'],
+                ['Cellular Automata',    'Projects',                4,       1,                 './index-backup.html'],
+                ['SmoothLife',           'Cellular Automata',       4,       1,                 './index-backup.html'],
+                ['Shadertoy',            'Cellular Automata',       4,       1,                 './index-backup.html'],
+                ['Neural CA',            'Cellular Automata',       4,       1,                 './index-backup.html'],
             ]);
 
             tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
 
             tree.draw(data, {
-                minColor: '#ddd',
-                midColor: '#006fff',
-                maxColor: '#60ba46',
-                headerHeight: 15,
-                fontColor: 'black',
+                enableHighlight: true,
+                eventsConfig: {
+                    highlight: ['mousein'],
+                    unhighlight: ['mouseout'],
+                    rollup: [],
+                    drilldown: ['click'],
+                },
+                minHighlightColor: '#8c6bb1',
+                midHighlightColor: '#9ebcda',
+                maxHighlightColor: '#edf8fb',
+                minColor: '#009688',
+                midColor: '#f7f7f7',
+                maxColor: '#ee8100',
+                headerHeight: 0,
                 showScale: false,
                 textStyle: {
                     color: '#ffffff',
                     bold: false,
+                    fontName: 'Helvetica Neue Light',
+                    fontSize: 14,
                 },
+            });
+
+            function go_to_link(url) {
+                var timeout = setTimeout(function(){
+                    window.location.replace(url);
+                    return true;
+                }, 300);
+
+                if (window.location = url){
+                    clearTimeout(timeout);
+                    return true;
+                }
+                else {
+                    if (window.location.href = url){
+                        clearTimeout(timeout);
+                        return true;
+                    }
+                    else {
+                        clearTimeout(timeout);
+                        window.location.replace(url);
+                        return true;
+                    }
+                }
+                return false;
+            };
+
+            google.visualization.events.addListener(tree, 'select', function() {
+                var selection = tree.getSelection();
+                var selected = selection[0]
+                if (selected.row != null) {
+                    var url = data.getFormattedValue(selected.row, 4);
+                    go_to_link(url);
+                }
+                tree.setSelection([]);
             });
         }
     </script>
@@ -93,6 +144,9 @@
 
     <!-- Map CSS -->
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
+
+    <!-- Site-specific custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
 
     <!-- Timeline CSS -->
     <link rel="stylesheet" href="./assets/css/timeline.css" />
@@ -112,15 +166,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
 
-        <!-- Brand -->
-<!--        <a class="navbar-brand" href="./index.html">-->
-<!--            <img src="./assets/img/brand.svg" class="navbar-brand-img" alt="...">-->
-<!--        </a>-->
-
         <!-- Toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Dark Code Theme Button -->
+        <!--        <button type="button" class="light-dark-toggle" data-label="Dark Code Toggle" aria-label="Dark code theme" data-title="Dark code theme"></button>-->
 
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -206,68 +258,95 @@
             <svg class="timeline-chart" width="420" height="1260" viewBox="0 0 100 300" aria-labelledby="title desc" role="img">
                 <!-- Timeline -->
                 <g class="bar">
-                    <rect x="48" y="0" width="0.3" height="1260" fill="#0c0c0c" fill-opacity="1.0"></rect> <!-- vertical -->
-                    <rect x="44" y="294" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2003 start -->
-                    <rect x="44" y="277.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2004 -->
-                    <rect x="44" y="260.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2005 -->
-                    <rect x="44" y="244" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2006 -->
-                    <rect x="44" y="227.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2008 -->
-                    <rect x="44" y="210.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2009 -->
-                    <rect x="44" y="194" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2010 -->
-                    <rect x="44" y="177.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2011 -->
-                    <rect x="44" y="160.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2012 -->
-                    <rect x="44" y="144" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2013 -->
-                    <rect x="44" y="127.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2014 -->
-                    <rect x="44" y="110.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2015 -->
-                    <rect x="44" y="94" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2016 -->
-                    <rect x="44" y="77.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2017 -->
-                    <rect x="44" y="60.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2018 -->
-                    <rect x="44" y="44" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2019 -->
-                    <rect x="44" y="27.3" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2020 -->
+                    <rect x="49" y="0" width="0.25" height="1260" fill="#0c0c0c" fill-opacity="1.0"></rect> <!-- vertical -->
+                    <rect x="46.625" y="294" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2003 start -->
+                    <rect x="46.625" y="277.3" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2004 -->
+                    <rect x="46.625" y="260.6" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2005 -->
+                    <text x="56" y="261" font-size="0.3em" dy=".25em">2005</text>
+                    <rect x="46.625" y="244" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2006 -->
+                    <rect x="46.625" y="227.3" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2008 -->
+                    <rect x="46.625" y="210.6" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2009 -->
+                    <rect x="46.625" y="194" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2010 -->
+                    <text x="56" y="194.5" font-size="0.3em" dy=".25em">2010</text>
+                    <rect x="46.625" y="177.3" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2011 -->
+                    <rect x="46.625" y="160.6" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2012 -->
+                    <rect x="46.625" y="144" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2013 -->
+                    <rect x="46.625" y="127.3" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2014 -->
+                    <rect x="46.625" y="110.6" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2015 -->
+                    <text x="56" y="111" font-size="0.3em" dy=".25em">2015</text>
+                    <rect x="46.625" y="94" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2016 -->
+                    <rect x="46.625" y="77.3" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2017 -->
+                    <rect x="46.625" y="60.6" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2018 -->
+                    <rect x="46.625" y="44" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2019 -->
+                    <rect x="46.625" y="27.3" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2020 -->
                     <text x="56" y="27.5" font-size="0.3em" dy=".25em">2020</text>
-                    <rect x="44" y="10.6" width="9" height="0.3" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2021 -->
+                    <rect x="46.625" y="10.6" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2021 -->
                 </g>
 
 
                 <!-- Work Resume -->
                 <g class="bar">
-                    <rect x="0" y="32" width="46" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="0" width="6" height="38" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>  <!-- Sept 2017 – Present -->
-                    <text x="-75" y="32" font-size="0.3em" dy=".25em">Machine Learning Tech Lead - AliveCor, Inc</text>
+                    <rect x="38" y="30" width="36" height="8" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>
+                    <rect x="38" y="0" width="8" height="38" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- Sept 2017 – Present -->
+                    <text x="80" y="28" font-size="0.3em" dy=".25em">
+                        <tspan x="80" dy="0em">Machine Learning Tech Lead</tspan>
+                        <tspan x="80" dy="1.25em" font-size="0.8em">AliveCor, Inc</tspan>
+                    </text>
                 </g>
                 <g class="bar">
-                    <rect x="0" y="42" width="46" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="42" width="6" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>  <!-- June 2017 - Sept 2017 -->
-                    <text x="-75" y="42" font-size="0.3em" dy=".25em">Senior Software Engineer - Google Area 120</text>
+                    <rect x="10" y="42" width="36" height="8" fill="#5c59a2" fill-opacity="0.4" rx="4" ry="4"></rect>
+                    <rect x="38" y="42" width="8" height="8" fill="#5c59a2" fill-opacity="0.4" rx="4" ry="4"></rect>  <!-- June 2017 - Sept 2017 -->
+                    <text x="-40" y="48" font-size="0.3em" dy=".25em">
+                        <tspan x="-40" dy="0em">Senior Software Engineer</tspan>
+                        <tspan x="-40" dy="1.25em" font-size="0.8em">Google Area 120</tspan>
+                    </text>
                 </g>
                 <g class="bar">
-                    <rect x="0" y="81" width="46" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="52" width="6" height="35" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>  <!-- March 2015 – June 2017 -->
-                    <text x="-75" y="81" font-size="0.3em" dy=".25em">Senior Software Engineer - YouTube TV</text>
+                    <rect x="38" y="81" width="36" height="8" fill="#006fff" fill-opacity="0.5" rx="4" ry="4"></rect>
+                    <rect x="38" y="54" width="8" height="35" fill="#006fff" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- March 2015 – June 2017 -->
+                    <text x="80" y="77" font-size="0.3em" dy=".25em">
+                        <tspan x="80" dy="0em">Senior Software Engineer</tspan>
+                        <tspan x="80" dy="1.25em" font-size="0.8em">YouTube TV</tspan>
+                    </text>
                 </g>
                 <g class="bar">
-                    <rect x="0" y="125" width="46" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="91" width="6" height="40" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>  <!-- May 2013 – March 2015 -->
-                    <text x="-75" y="125" font-size="0.3em" dy=".25em">Co-founder, CTO - Weaver Labs</text>
+                    <rect x="10" y="125" width="36" height="8" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>
+                    <rect x="38" y="93" width="8" height="40" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- May 2013 – March 2015 -->
+                    <text x="-40" y="121" font-size="0.3em" dy=".25em">
+                        <tspan x="-40" dy="0em">Co-founder, CTO</tspan>
+                        <tspan x="-40" dy="1.25em" font-size="0.8em">Weaver Labs</tspan>
+                    </text>
                 </g>
                 <g class="bar">
-                    <rect x="0" y="210" width="46" height="6" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="135" width="6" height="81" fill="#006fff" fill-opacity="0.6" rx="3" ry="3"></rect>  <!-- Jul 2007 - Nov 2012 -->
-                    <text x="-75" y="210" font-size="0.3em" dy=".25em">Co-founder, CTO - GameSalad</text>
+                    <rect x="38" y="210" width="36" height="8" fill="#5c59a2" fill-opacity="0.4" rx="4" ry="4"></rect>
+                    <rect x="38" y="137" width="8" height="81" fill="#5c59a2" fill-opacity="0.4" rx="4" ry="4"></rect>  <!-- Jul 2007 - Nov 2012 -->
+                    <text x="80" y="210" font-size="0.3em" dy=".25em">
+                        <tspan x="80" dy="0em">Co-founder</tspan>
+                        <tspan x="80" dy="1.25em" font-size="0.8em">GameSalad</tspan>
+                    </text>
                 </g>
                 <g class="bar">
-                    <rect x="0" y="230" width="46" height="6" fill="#60ba46" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="220" width="6" height="16" fill="#60ba46" fill-opacity="0.6" rx="3" ry="3"></rect>   <!-- Jan 2007 - Jul 2007 -->
+                    <rect x="10" y="229" width="36" height="8" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>
+                    <rect x="38" y="221" width="8" height="16" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>   <!-- Jan 2007 - Jul 2007 -->
                     <text x="-40" y="230" font-size="0.3em" dy=".25em">
                         <tspan x="-40" dy="0em">Software Engineer</tspan>
-                        <tspan x="-40" dy="1.0em" font-size="0.8em">Epic Systems</tspan>
+                        <tspan x="-40" dy="1.25em" font-size="0.8em">Epic Systems</tspan>
                     </text>
                 </g>
                 <g class="bar">  <!-- Gustavus -->
-                    <rect x="0" y="294" width="46" height="6" fill="#60ba46" fill-opacity="0.6" rx="3" ry="3"></rect>
-                    <rect x="40" y="240" width="6" height="60" fill="#60ba46" fill-opacity="0.6" rx="3" ry="3"></rect>  <!-- 2002 - 2006 -->
-                    <text x="-40" y="290" font-size="0.3em" dy=".25em">
-                        <tspan x="-40">Gustavus Adolphus College</tspan>
+                    <rect x="10" y="292" width="36" height="8" fill="#006fff" fill-opacity="0.5" rx="4" ry="4"></rect>
+                    <rect x="38" y="240" width="8" height="60" fill="#006fff" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- 2002 - 2006 -->
+                    <text x="-40" y="286" font-size="0.3em" dy=".25em">
+                        <tspan x="-40">B.S. Comp. Sci. and Math</tspan>
+                        <tspan x="-40" dy="1.25em" font-size="0.8em">Gustavus Adolphus College</tspan>
+                    </text>
+                </g>
+                <g class="bar">  <!-- Rice -->
+                    <rect x="52" y="279" width="36" height="8" fill="#5c59a2" fill-opacity="0.4" rx="4" ry="4"></rect>
+                    <rect x="52" y="242" width="8" height="45" fill="#5c59a2" fill-opacity="0.4" rx="4" ry="4"></rect>  <!-- 2003 - 2005 -->
+                    <text x="80" y="274" font-size="0.3em" dy=".25em">
+                        <tspan>Research Assistant</tspan>
+                        <tspan x="80" dy="1.25em" font-size="0.8em">Rice University</tspan>
                     </text>
                 </g>
 
@@ -286,11 +365,11 @@
             <div class="col-12 col-md-4 col-lg-3">
 
                 <!-- Brand -->
-                <img src="./assets/img/brand.svg" alt="..." class="footer-brand img-fluid mb-2">
-
+<!--                <img src="./assets/img/brand.svg" alt="..." class="footer-brand img-fluid mb-2">-->
+                Daniel Treiman
                 <!-- Text -->
                 <p class="text-gray-700 mb-2">
-                    A better way to build.
+                    2021
                 </p>
 
                 <!-- Social -->
@@ -317,144 +396,17 @@
 
                 <!-- Heading -->
                 <h6 class="fw-bold text-uppercase text-gray-700">
-                    Products
-                </h6>
-
-                <!-- List -->
-                <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Page Builder
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            UI Kit
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Styleguide
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Documentation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-reset">
-                            Changelog
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-
-                <!-- Heading -->
-                <h6 class="fw-bold text-uppercase text-gray-700">
-                    Services
-                </h6>
-
-                <!-- List -->
-                <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Documentation
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Changelog
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Pagebuilder
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-reset">
-                            UI Kit
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="col-6 col-md-4 offset-md-4 col-lg-2 offset-lg-0">
-
-                <!-- Heading -->
-                <h6 class="fw-bold text-uppercase text-gray-700">
                     Connect
                 </h6>
 
                 <!-- List -->
-                <ul class="list-unstyled text-muted mb-0">
+                <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
                     <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Page Builder
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            UI Kit
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Styleguide
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Documentation
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Changelog
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Documentation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-reset">
-                            Changelog
+                        <a href="https://docs.google.com/document/d/1mtrPBnflbAXb0VSBMSQDZqC1yfI38i1x4-I9SAB__zk/edit?usp=sharing" class="text-reset">
+                            Online Resume
                         </a>
                     </li>
                 </ul>
-
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-
-                <!-- Heading -->
-                <h6 class="fw-bold text-uppercase text-gray-700">
-                    Legal
-                </h6>
-
-                <!-- List -->
-                <ul class="list-unstyled text-muted mb-0">
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Documentation
-                        </a>
-                    </li>
-                    <li class="mb-3">
-                        <a href="#!" class="text-reset">
-                            Changelog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-reset">
-                            Pagebuilder
-                        </a>
-                    </li>
-                </ul>
-
             </div>
         </div> <!-- / .row -->
     </div> <!-- / .container -->
