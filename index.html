@@ -63,9 +63,12 @@
                 ['Project',              'Parent',                 'Size',  'Score (color)',    'URL'],
                 ['Projects',             null,                      0,       1,                 './index-backup.html'],
                 ['Kardia AI',            'Projects',                10,      4,                 './index-backup.html'],
-                ['Style Transfer',       'Projects',                8,       2,                 './index-backup.html'],
+                ['Style Transfer Video', 'Projects',                8,       2,                 null],
+                ['Leigh Woods',          'Style Transfer Video',    8,       2,                 'https://www.youtube.com/watch?v=5PxW-6TYIF4'],
+                ['Bicycle Day',          'Style Transfer Video',    8,       2,                 '/bicycle_day/index.html'],
+                ['Video as Style',       'Style Transfer Video',    8,       2,                 './index-backup.html'],
                 ['Video Creation',       'Projects',                8,       2,                 './index-backup.html'],
-                ['Feature Inversion',    'Projects',                4,       1,                 './index-backup.html'],
+                ['Feature Inversion',    'Projects',                4,       1,                 './feature_inversion/index.html'],
                 ['ARC',                  'Projects',                4,       1,                 './index-backup.html'],
                 ['Cellular Automata',    'Projects',                4,       1,                 './index-backup.html'],
                 ['SmoothLife',           'Cellular Automata',       4,       1,                 './index-backup.html'],
@@ -128,7 +131,13 @@
                 var selected = selection[0]
                 if (selected.row != null) {
                     var url = data.getFormattedValue(selected.row, 4);
-                    go_to_link(url);
+                    console.log(url);
+                    if (url == '') {
+                        return;
+                    }
+                    else {
+                        go_to_link(url);
+                    }
                 }
                 tree.setSelection([]);
             });
@@ -181,7 +190,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <h1>
-                        <a class="nav-link" href="index.html" >
+                        <a class="nav-link" href="/index.html" >
                             Daniel Treiman
                         </a>
                     </h1>
@@ -189,8 +198,7 @@
             </ul>
 
             <!-- Button -->
-            <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="https://themes.getbootstrap.com/product/landkit/" target="_blank" style="visibility: hidden;">
-                Buy now
+            <a class="navbar-btn btn btn-sm btn-primary lift ms-auto" href="#" target="_blank" style="visibility: hidden;">
             </a>
 
         </div>
@@ -365,6 +373,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 col-lg-3">
+            </div>
+            <div class="col-12 col-md-8 col-lg-4">
 
                 <!-- Brand -->
 <!--                <img src="./assets/img/brand.svg" alt="..." class="footer-brand img-fluid mb-2">-->
