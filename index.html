@@ -20,6 +20,7 @@
             ]);
 
             var options = {
+                backgroundColor: '#292929',
                 legend: 'none',
                 pieSliceText: 'label',
                 pieHole: 0.4,
@@ -86,6 +87,7 @@
                     rollup: [],
                     drilldown: ['click'],
                 },
+                backgroundColor: '#494D5F',
                 minHighlightColor: '#8c6bb1',
                 midHighlightColor: '#9ebcda',
                 maxHighlightColor: '#edf8fb',
@@ -154,9 +156,6 @@
     <!-- Map CSS -->
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
 
-    <!-- Site-specific custom CSS -->
-    <link rel="stylesheet" href="./assets/css/custom.css" />
-
     <!-- Timeline CSS -->
     <link rel="stylesheet" href="./assets/css/timeline.css" />
 
@@ -166,13 +165,16 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
 
+    <!-- Site-specific custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+
     <!-- Title -->
     <title>Daniel Treiman</title>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-dark bg-sky">
     <div class="container">
 
         <!-- Toggler -->
@@ -227,19 +229,15 @@
 
                 <!-- Text -->
                 <p class="text-muted mb-6 mb-md-0">
-                    Designed with the latest design trends in mind; Daniel is modern, minimal, and beautiful.
+                    I am AI/ML tech lead at AliveCor, where we use machine learning to provide remote cardiological services.
+                    I specialize in applied ML, high performance computing, and visual programming tools.
                 </p>
                 <p class="text-muted mb-6 mb-md-0">
-                    Paragraph II is pretty similar.
+                    Before AliveCor, I co-founded <a href="https://gamesalad.com">GameSalad</a>, a game development
+                    platform that allows anyone to create a game with a visual programming interface.
                 </p>
                 <p class="text-muted mb-6 mb-md-0">
-                    Not so for paragraph three.
-                </p>
-                <p class="text-muted mb-6 mb-md-0">
-                    Existing only to take up space
-                </p>
-                <p class="text-muted mb-6 mb-md-0">
-                    To increase the layout height of its container.
+                    I work on machine learning with an emphasis on building tools that enable content creation.
                 </p>
 
             </div>
@@ -266,31 +264,31 @@
             <svg class="timeline-chart" width="420" height="1260" viewBox="0 0 100 300" aria-labelledby="title desc" role="img">
                 <!-- Timeline -->
                 <g class="bar">
-                    <rect x="49" y="0" width="0.25" height="300" fill="#0c0c0c" fill-opacity="1.0"></rect> <!-- vertical -->
-                    <rect x="46.625" y="294" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2003 start -->
+                    <rect x="49" y="0" width="0.25" height="300" fill="#E5EAF5" fill-opacity="1.0"></rect> <!-- vertical -->
+                    <rect x="46.625" y="294" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2003 start -->
                     <text x="56" y="294" font-size="0.3em" dy=".25em">2003</text>
-                    <rect x="46.625" y="277.5" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2004 -->
+                    <rect x="46.625" y="277.5" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2004 -->
 <!--                    <text x="56" y="261" font-size="0.3em" dy=".25em">2005</text>-->
-                    <rect x="46.625" y="262.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2005 -->
-                    <rect x="46.625" y="246.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2006 -->
-                    <rect x="46.625" y="230.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2007 -->
-                    <rect x="46.625" y="214.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2008 -->
-                    <rect x="46.625" y="198.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2009 -->
-                    <rect x="46.625" y="182.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2010 -->
+                    <rect x="46.625" y="262.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2005 -->
+                    <rect x="46.625" y="246.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2006 -->
+                    <rect x="46.625" y="230.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2007 -->
+                    <rect x="46.625" y="214.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2008 -->
+                    <rect x="46.625" y="198.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2009 -->
+                    <rect x="46.625" y="182.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2010 -->
                     <text x="56" y="182" font-size="0.3em" dy=".25em">2010</text>
-                    <rect x="46.625" y="166.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2011 -->
-                    <rect x="46.625" y="150.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2012 -->
-                    <rect x="46.625" y="134.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2013 -->
-                    <rect x="46.625" y="118.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2014 -->
-                    <rect x="46.625" y="102.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2015 -->
+                    <rect x="46.625" y="166.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2011 -->
+                    <rect x="46.625" y="150.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2012 -->
+                    <rect x="46.625" y="134.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2013 -->
+                    <rect x="46.625" y="118.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2014 -->
+                    <rect x="46.625" y="102.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2015 -->
                     <text x="56" y="102" font-size="0.3em" dy=".25em">2015</text>
-                    <rect x="46.625" y="86.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2016 -->
-                    <rect x="46.625" y="70.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2017 -->
-                    <rect x="46.625" y="54.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2018 -->
-                    <rect x="46.625" y="38.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2019 -->
-                    <rect x="46.625" y="22.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2020 -->
+                    <rect x="46.625" y="86.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2016 -->
+                    <rect x="46.625" y="70.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2017 -->
+                    <rect x="46.625" y="54.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2018 -->
+                    <rect x="46.625" y="38.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2019 -->
+                    <rect x="46.625" y="22.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2020 -->
                     <text x="56" y="22.0" font-size="0.3em" dy=".25em">2020</text>
-                    <rect x="46.625" y="6.0" width="5" height="0.25" fill="#0c0c0c" fill-opacity="1.0"></rect>  <!-- 2021 -->
+                    <rect x="46.625" y="6.0" width="5" height="0.25" fill="#E5EAF5" fill-opacity="1.0"></rect>  <!-- 2021 -->
                 </g>
 
 
@@ -369,7 +367,7 @@
 
 
 <!-- FOOTER -->
-<footer class="py-8 py-md-11 bg-gray-200">
+<footer class="py-8 py-md-11 bg-footer-gradient">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 col-lg-3">

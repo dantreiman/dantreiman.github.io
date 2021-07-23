@@ -6,3 +6,17 @@
     background: url("/assets/img/icons/brightness_6_black_24dp.svg") center no-repeat;
 }
 
+body {
+    background-color: #292929;
+    color: #E5EAF5;
+}
+
+.bg-sky {
+    /*background-color: #A0D2EB;*/
+    background-color: #292929;
+}
+
+.bg-footer-gradient {
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, #292929 0%, #8458B3 100%);
+}
