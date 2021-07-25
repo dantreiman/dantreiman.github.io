@@ -24,12 +24,13 @@
                 legend: 'none',
                 pieSliceText: 'label',
                 pieHole: 0.4,
+                pieSliceBorderColor: '#494D5F',
                 slices: {
-                    0: { color: '#84bbe2' },  // Sky blue
-                    1: { color: '#baafa5' },  // Blue-gray
-                    2: { color: '#4882c2' }, // Deep blue
-                    3: { color: '#5c59a2' },  // Violet
-                    4: { color: '#d3ccc3' },  // Med gray
+                    0: { color: '#a0d2eb' },  // Machine Learning
+                    1: { color: '#494D5F' },  // Software Engineering
+                    2: { color: '#37465B' }, // System Architecture
+                    3: { color: '#8458B3' },  // Applied Math
+                    4: { color: '#d0bdf4' },  // Tool Development
                 },
                 chartArea: {
                     top: 16,
@@ -49,7 +50,7 @@
                 },
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            var chart = new google.visualization.PieChart(document.getElementById('donut-chart-div'));
             chart.draw(data, options);
         }
         window.addEventListener('resize', drawChart, false);
@@ -61,23 +62,25 @@
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Project',              'Parent',                 'Size',  'Score (color)',    'URL'],
-                ['Projects',             null,                      0,       1,                 './index-backup.html'],
-                ['Kardia AI',            'Projects',                10,      4,                 './index-backup.html'],
-                ['Style Transfer Video', 'Projects',                8,       2,                 null],
-                ['Leigh Woods',          'Style Transfer Video',    8,       2,                 'https://www.youtube.com/watch?v=5PxW-6TYIF4'],
-                ['Bicycle Day',          'Style Transfer Video',    8,       2,                 '/bicycle_day/index.html'],
-                ['Video as Style',       'Style Transfer Video',    8,       2,                 './index-backup.html'],
-                ['Video Creation',       'Projects',                8,       2,                 './index-backup.html'],
-                ['Feature Inversion',    'Projects',                4,       1,                 './feature_inversion/index.html'],
-                ['ARC',                  'Projects',                4,       1,                 './index-backup.html'],
-                ['Cellular Automata',    'Projects',                4,       1,                 './index-backup.html'],
-                ['SmoothLife',           'Cellular Automata',       4,       1,                 './index-backup.html'],
-                ['Shadertoy',            'Cellular Automata',       4,       1,                 './index-backup.html'],
-                ['Neural CA',            'Cellular Automata',       4,       1,                 './index-backup.html'],
+                ['Project',                'Parent',                 'Size',  'Score (color)',    'URL'],
+                ['Projects',               null,                      0,       1,                 null],
+                ['Group Equivariant CNNs', 'Projects',                10,      10,                 './index-backup.html'],
+                ['Style Transfer Video',   'Projects',                8,       8,                 null],
+                ['Leigh Woods',            'Style Transfer Video',    8,       8,                 'https://www.youtube.com/watch?v=5PxW-6TYIF4'],
+                ['Bicycle Day',            'Style Transfer Video',    8,       8,                 '/bicycle_day/index.html'],
+                ['Video as Style',         'Style Transfer Video',    8,       8,                 './index-backup.html'],
+                ['Video Creation',         'Projects',                8,       8,                 './index-backup.html'],
+                ['Feature Inversion',      'Projects',                4,       4,                 './feature_inversion/index.html'],
+                ['Kaggle',                 'Projects',                3,       3,                 null],
+                ['Cell Segmentation',      'Kaggle',                  1,       1,                 './index-backup.html'],
+                ['ARC',                    'Kaggle',                  3,       3,                 './index-backup.html'],
+                ['Cellular Automata',      'Projects',                4,       4,                 null],
+                ['SmoothLife',             'Cellular Automata',       4,       4,                 './index-backup.html'],
+                ['Shadertoy',              'Cellular Automata',       4,       4,                 './index-backup.html'],
+                ['Neural CA',              'Cellular Automata',       4,       4,                 './anura/index.html'],
             ]);
 
-            tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+            tree = new google.visualization.TreeMap(document.getElementById('treemap-chart-div'));
 
             tree.draw(data, {
                 enableHighlight: true,
@@ -88,14 +91,15 @@
                     drilldown: ['click'],
                 },
                 backgroundColor: '#494D5F',
-                minHighlightColor: '#8c6bb1',
-                midHighlightColor: '#9ebcda',
-                maxHighlightColor: '#edf8fb',
-                minColor: '#009688',
-                midColor: '#f7f7f7',
-                maxColor: '#ee8100',
+                minHighlightColor: '#6cf9e5',
+                midHighlightColor: '#99fff0',
+                maxHighlightColor: '#a6a3ff',
+                minColor: '#08C6AB',
+                midColor: '#5AFFE7',
+                maxColor: '#726EFF',
                 headerHeight: 0,
                 showScale: false,
+                showTooltips: false,  // TODO: use tooltips as image previews
                 textStyle: {
                     color: '#ffffff',
                     bold: false,
@@ -217,7 +221,7 @@
                 <h2 class="text-center">Skills</h2>
 
                 <!-- Skills Donut Chart -->
-                <div id="donutchart" style="width: 100%; height: 400px;"></div>
+                <div id="donut-chart-div" style="width: 100%; height: 400px;"></div>
 
             </div>
             <div class="col-12 col-md-5 col-lg-4" data-aos="fade-up">
@@ -228,15 +232,15 @@
                 </h3>
 
                 <!-- Text -->
-                <p class="text-muted mb-6 mb-md-0">
+                <p class="text-gray-500 mb-6 mb-md-0">
                     I am AI/ML tech lead at AliveCor, where we use machine learning to provide remote cardiological services.
                     I specialize in applied ML, high performance computing, and visual programming tools.
                 </p>
-                <p class="text-muted mb-6 mb-md-0">
+                <p class="text-gray-500 mb-6 mb-md-0">
                     Before AliveCor, I co-founded <a href="https://gamesalad.com">GameSalad</a>, a game development
                     platform that allows anyone to create a game with a visual programming interface.
                 </p>
-                <p class="text-muted mb-6 mb-md-0">
+                <p class="text-gray-500 mb-6 mb-md-0">
                     I work on machine learning with an emphasis on building tools that enable content creation.
                 </p>
 
@@ -246,7 +250,7 @@
 
 
                 <!-- Projects Tree Map -->
-                <div id="chart_div" style="width: 100%; height: 100%;"></div>
+                <div id="treemap-chart-div" style="width: 100%; height: 100%;"></div>
             </div>
         </div> <!-- / .row -->
     </div> <!-- / .container -->
@@ -297,8 +301,8 @@
                     <rect x="38" y="30" width="36" height="8" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>
                     <rect x="38" y="0" width="8" height="38" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- Sept 2017 – Present -->
                     <text x="80" y="28" font-size="0.3em" dy=".25em">
-                        <tspan x="80" dy="0em">Machine Learning Tech Lead</tspan>
-                        <tspan x="80" dy="1.25em" font-size="0.8em">AliveCor, Inc</tspan>
+                        <tspan x="80" color="#E5EAF5" dy="0em">Machine Learning Tech Lead</tspan>
+                        <tspan x="80" color="#E5EAF5" dy="1.25em" font-size="0.8em">AliveCor, Inc</tspan>
                     </text>
                 </g>
                 <g class="bar">
@@ -320,7 +324,7 @@
                 <g class="bar">
                     <rect x="10" y="125" width="36" height="8" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>
                     <rect x="38" y="93" width="8" height="40" fill="#60ba46" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- May 2013 – March 2015 -->
-                    <text x="-40" y="121" font-size="0.3em" dy=".25em">
+                    <text class="timeline-label" x="-40" y="121" font-size="0.3em" dy=".25em">
                         <tspan x="-40" dy="0em">Co-founder, CTO</tspan>
                         <tspan x="-40" dy="1.25em" font-size="0.8em">Weaver Labs</tspan>
                     </text>
@@ -372,13 +376,13 @@
         <div class="row">
             <div class="col-12 col-md-4 col-lg-3">
             </div>
-            <div class="col-12 col-md-8 col-lg-4">
+            <div class="fw-bold col-12 col-md-8 col-lg-4">
 
                 <!-- Brand -->
 <!--                <img src="./assets/img/brand.svg" alt="..." class="footer-brand img-fluid mb-2">-->
                 Daniel Treiman
                 <!-- Text -->
-                <p class="text-gray-700 mb-2">
+                <p class="text-gray-500 mb-2">
                     2021
                 </p>
 
@@ -405,12 +409,12 @@
             <div class="col-6 col-md-4 col-lg-2">
 
                 <!-- Heading -->
-                <h6 class="fw-bold text-uppercase text-gray-700">
+                <h6 class="fw-bold text-uppercase text-heading-light">
                     Connect
                 </h6>
 
                 <!-- List -->
-                <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+                <ul class="list-unstyled text-gray-400 mb-6 mb-md-8 mb-lg-0">
                     <li class="mb-3">
                         <a href="https://docs.google.com/document/d/1mtrPBnflbAXb0VSBMSQDZqC1yfI38i1x4-I9SAB__zk/edit?usp=sharing" class="text-reset">
                             Online Resume

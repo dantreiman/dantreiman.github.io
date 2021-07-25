@@ -1,3 +1,40 @@
+/*
+
+292929 - Artboard background
+
+Purple 90’s Color Scheme by Duminda Perera
+	Ice Cold: #a0d2eb        (sky blue)
+	Freeze Purple: #e5eaf5   ( nearly white )
+	Medium Purple: #d0bdf4
+	Purple Pain: #8458B3
+	Heavy Purple: #494D5F   ( nearly dark grey )
+
+Florescent Purple to Green
+
+#726EFF
+#5AFFE7
+#08C6AB
+#37465B
+#212B38
+
+# Orange to blue (chart maybe)
+
+#FF8692
+#E5EAF5
+#92A5FD
+#587FFC
+#1E1E5D
+
+# Brighter orange and light blue (sunset and sky)
+
+#FFFFFF
+#FFCA00
+#FF6732
+#00F2FF
+#2A2F3D
+
+*/
+
 .light-dark-toggle {
     padding: 0;
     border: none;
@@ -6,8 +43,30 @@
     background: url("/assets/img/icons/brightness_6_black_24dp.svg") center no-repeat;
 }
 
+#treemap-chart-div svg g rect {
+    stroke-width: 1px;
+    stroke: #494D5F;
+}
+
+#treemap-chart-div svg g:last-of-type rect {
+    stroke-opacity: 0;  /* Makes highlight rects for tree map chart invisible. */
+}
+
+#treemap-chart-div svg g text {
+    stroke-width: 1px;
+    fill: #ffffff;
+}
+
 body {
     background-color: #292929;
+    color: #E5EAF5;
+}
+
+.text-heading-light {
+    color: #E5EAF5;
+}
+
+.timeline-label tspan {
     color: #E5EAF5;
 }
 
