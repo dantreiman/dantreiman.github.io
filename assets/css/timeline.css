@@ -9,3 +9,12 @@ svg.timeline-chart {
 svg.timeline-chart g.bar text {
     fill: #E5EAF5;
 }
+
+svg.timeline-chart g.timeline text {
+    fill: #E5EAF5;
+    fill-opacity: 0.5;
+}
+
+svg.timeline-chart g.timeline rect {
+    fill-opacity: 0.5;
+}
