@@ -8,8 +8,8 @@
     <!-- Skills Donut Chart -->
     <script type="text/javascript">
         google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
+        google.charts.setOnLoadCallback(drawDonutChart);
+        function drawDonutChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
                 ['Machine Learning',      25],
@@ -91,14 +91,14 @@
                 }
             });
         }
-        window.addEventListener('resize', drawChart, false);
+        window.addEventListener('resize', drawDonutChart, false);
     </script>
 
     <!-- Projects Tree Map -->
     <script type="text/javascript">
         google.charts.load('current', {'packages':['treemap']});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
+        google.charts.setOnLoadCallback(drawTreeChart);
+        function drawTreeChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Project',                'Parent',                 'Size',  'Score (color)',    'URL'],
                 ['Projects',               null,                      0,       1,                 null],
@@ -186,6 +186,7 @@
                 tree.setSelection([]);
             });
         }
+        window.addEventListener('resize', drawTreeChart, false);
     </script>
 
     <!-- Resume Timelines -->
@@ -220,9 +221,9 @@
     <div class="container">
 
         <!-- Toggler -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
 
         <!-- Dark Code Theme Button -->
         <!--        <button type="button" class="light-dark-toggle" data-label="Dark Code Toggle" aria-label="Dark code theme" data-title="Dark code theme"></button>-->
@@ -288,7 +289,7 @@
 
 
                 <!-- Projects Tree Map -->
-                <div id="treemap-chart-div" style="width: 100%; height: 100%;"></div>
+                <div id="treemap-chart-div" style="width: 100%; height: 500px;"></div>
             </div>
         </div> <!-- / .row -->
     </div> <!-- / .container -->
@@ -297,13 +298,12 @@
 <!-- RESUME TIMELINE -->
 <section class="py-7 py-md-9 border-bottom">
     <div class="container">
-        <div class="row align-items-center justify-content-center">
+        <div id="padding-override-left-right" class="row align-items-center justify-content-center">
             <h2 class="left">Work Timeline</h2>
-
-            <!--            Years: 2002 to 2021  (19 years)  -->
+<!--            Years: 2002 to 2021  (19 years)  -->
 <!--            apx. 15 height units per year    -->
 <!--            h = 296 - (y - 2002) * 16.6        -->
-            <svg class="timeline-chart" width="420" height="1260" viewBox="0 0 100 300" aria-labelledby="title desc" role="img">
+            <svg class="timeline-chart" width="420" height="1260" viewBox="0 0 120 300" aria-labelledby="title desc" role="img">
                 <!-- Timeline -->
                 <g class="timeline">
                     <rect x="49" y="0" width="0.25" height="300" fill="#E5EAF5"></rect> <!-- vertical -->
@@ -354,7 +354,7 @@
                 </g>
                 <g class="bar">
                     <rect x="30" y="42" width="16" height="8" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>
-                    <rect x="38" y="42" width="8" height="8" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>  <!-- June 2017 - Sept 2017 -->
+                    <rect x="38" y="38" width="8" height="12" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>  <!-- June 2017 - Sept 2017 -->
                     <text y="45" font-size="0.3em" dy=".25em">
                         <tspan x="-33" dy="0em">Senior Software Engineer</tspan>
                         <tspan x="-33" dy="1.25em" font-size="0.8em">Google Area 120</tspan>
@@ -371,16 +371,25 @@
                 </g>
                 <g class="bar">
                     <rect x="38" y="81" width="16" height="8" fill="#587ffc" fill-opacity="0.55" rx="4" ry="4"></rect>
-                    <rect x="38" y="54" width="8" height="35" fill="#587ffc" fill-opacity="0.55" rx="4" ry="4"></rect>  <!-- March 2015 – June 2017 -->
-                    <text x="80" y="76" font-size="0.3em" dy=".25em">
-                        <tspan x="80" dy="0em">Senior Software Engineer</tspan>
-                        <tspan x="80" dy="1.25em" font-size="0.8em">YouTube TV</tspan>
+                    <rect x="38" y="50" width="8" height="39" fill="#587ffc" fill-opacity="0.55" rx="4" ry="4"></rect>  <!-- March 2015 – June 2017 -->
+                    <text y="84.5" font-size="0.3em" dy=".25em">
+                        <tspan x="62" dy="0em">Senior Software Engineer</tspan>
+                        <tspan x="62" dy="1.25em" font-size="0.8em">YouTube TV</tspan>
                     </text>
+                    <g class="bracket">
+                        <rect x="58" y="78.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- [ -->
+                        <rect x="58" y="78.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="58" y="92.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+
+                        <rect x="120.5" y="78.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- ] -->
+                        <rect x="122" y="78.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="120.5" y="92.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                    </g>
                 </g>
                 <g class="bar">
                     <rect x="30" y="125" width="16" height="8" fill="#08c6ab" fill-opacity="0.5" rx="4" ry="4"></rect>
-                    <rect x="38" y="93" width="8" height="40" fill="#08c6ab" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- May 2013 – March 2015 -->
-                    <text class="timeline-label" x="-40" y="128" font-size="0.3em" dy=".25em">
+                    <rect x="38" y="89" width="8" height="44" fill="#08c6ab" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- May 2013 – March 2015 -->
+                    <text class="timeline-label" y="128" font-size="0.3em" dy=".25em">
                         <tspan x="-17" dy="0em">Co-founder, CTO</tspan>
                         <tspan x="-17" dy="1.25em" font-size="0.8em">Weaver Labs</tspan>
                     </text>
@@ -396,32 +405,41 @@
                 </g>
                 <g class="bar">
                     <rect x="38" y="210" width="16" height="8" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>
-                    <rect x="38" y="137" width="8" height="81" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>  <!-- Jul 2007 - Nov 2012 -->
-                    <text x="80" y="202" font-size="0.3em" dy=".25em">
-                        <tspan x="80" dy="0em">Co-founder</tspan>
-                        <tspan x="80" dy="1.25em" font-size="0.8em">GameSalad</tspan>
+                    <rect x="38" y="133" width="8" height="85" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>  <!-- Jul 2007 - Nov 2012 -->
+                    <text y="213" font-size="0.3em" dy=".25em">
+                        <tspan x="62" dy="0em">Co-founder</tspan>
+                        <tspan x="62" dy="1.25em" font-size="0.8em">GameSalad</tspan>
                     </text>
+                    <g class="bracket">
+                        <rect x="58" y="207.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- [ -->
+                        <rect x="58" y="207.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="58" y="221.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+
+                        <rect x="90.5" y="207.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- ] -->
+                        <rect x="92" y="207.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="90.5" y="221.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                    </g>
                 </g>
                 <g class="bar">
                     <rect x="30" y="229" width="16" height="8" fill="#08c6ab" fill-opacity="0.5" rx="4" ry="4"></rect>
-                    <rect x="38" y="221" width="8" height="16" fill="#08c6ab" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- Jan 2007 - Jul 2007 -->
-                    <text y="230" font-size="0.3em" dy=".25em">
-                        <tspan x="-17" dy="0em">Software Engineer</tspan>
-                        <tspan x="-17" dy="1.25em" font-size="0.8em">Epic Systems</tspan>
+                    <rect x="38" y="218" width="8" height="19" fill="#08c6ab" fill-opacity="0.5" rx="4" ry="4"></rect>  <!-- Jan 2007 - Jul 2007 -->
+                    <text y="232" font-size="0.3em" dy=".25em">
+                        <tspan x="-18" dy="0em">Software Engineer</tspan>
+                        <tspan x="-18" dy="1.25em" font-size="0.8em">Epic Systems</tspan>
                     </text>
                     <g class="bracket">
-                        <rect x="-20" y="224.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- [ -->
-                        <rect x="-20" y="224.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
-                        <rect x="-20" y="238.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="-22" y="226.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- [ -->
+                        <rect x="-22" y="226.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="-22" y="240.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
 
-                        <rect x="24.5" y="224.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- ] -->
-                        <rect x="26" y="224.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
-                        <rect x="24.5" y="238.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="24.5" y="226.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- ] -->
+                        <rect x="26" y="226.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="24.5" y="240.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
                     </g>
                 </g>
                 <g class="bar">  <!-- Gustavus -->
                     <rect x="30" y="289" width="16" height="8" fill="#587ffc" fill-opacity="0.55" rx="4" ry="4"></rect>
-                    <rect x="38" y="240" width="8" height="57" fill="#587ffc" fill-opacity="0.55" rx="4" ry="4"></rect>  <!-- 2002 - 2006 -->
+                    <rect x="38" y="237" width="8" height="60" fill="#587ffc" fill-opacity="0.55" rx="4" ry="4"></rect>  <!-- 2002 - 2006 -->
                     <text x="-34" y="291" font-size="0.3em" dy=".25em">
                         <tspan x="-34">B.S. Comp. Sci. and Math</tspan>
                         <tspan x="-34" dy="1.25em" font-size="0.8em">Gustavus Adolphus College</tspan>
@@ -439,10 +457,19 @@
                 <g class="bar">  <!-- Rice -->
                     <rect x="52" y="279" width="16" height="8" fill="#726EFF" fill-opacity="0.45" rx="4" ry="4"></rect>
                     <rect x="52" y="242" width="8" height="45" fill="#726EFF" fill-opacity="0.45    " rx="4" ry="4"></rect>  <!-- 2003 - 2005 -->
-                    <text x="80" y="270" font-size="0.3em" dy=".25em">
-                        <tspan>Research Assistant</tspan>
-                        <tspan x="80" dy="1.25em" font-size="0.8em">Rice University</tspan>
+                    <text y="281" font-size="0.3em" dy=".25em">
+                        <tspan x="74">Research Assistant</tspan>
+                        <tspan x="74" dy="1.25em" font-size="0.8em">Rice University</tspan>
                     </text>
+                    <g class="bracket">
+                        <rect x="70" y="276.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- [ -->
+                        <rect x="70" y="276.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="70" y="290.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+
+                        <rect x="118.5" y="276.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>      <!-- ] -->
+                        <rect x="120" y="276.0" width="0.5" height="14.0" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                        <rect x="118.5" y="290.0" width="2.0" height="0.5" fill="#E5EAF5" fill-opacity="1.0"></rect>
+                    </g>
                 </g>
 
                 <!-- Personal / Side Projects -->
