@@ -5,3 +5,7 @@ svg.timeline-chart {
     margin: auto;
     /*mix-blend-mode: multiply;*/
 }
+
+svg.timeline-chart g.bar text {
+    fill: #E5EAF5;
+}

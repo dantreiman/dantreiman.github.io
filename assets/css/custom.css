@@ -66,10 +66,6 @@ body {
     color: #E5EAF5;
 }
 
-.timeline-label tspan {
-    color: #E5EAF5;
-}
-
 .bg-sky {
     /*background-color: #A0D2EB;*/
     background-color: #292929;
@@ -78,4 +74,14 @@ body {
 .bg-footer-gradient {
     background: rgb(2,0,36);
     background: linear-gradient(180deg, #292929 0%, #8458B3 100%);
+}
+
+#padding-override-left {
+    margin-right: -10px;
+    margin-left: -20px
+}
+
+#padding-override-right {
+    margin-right: -20px;
+    margin-left: -10px
 }
