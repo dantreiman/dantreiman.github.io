@@ -113,18 +113,18 @@
                 ['Project',                'Parent',                 'Size',  'Score (color)',    'URL'],
                 ['Projects',               null,                      0,       1,                 null],
                 ['Group Equivariant CNNs', 'Projects',                10,      10,                'https://github.com/dantreiman/scale-equivariant-decomposed-convolution'],
-                ['Style Transfer Video',   'Projects',                8,       8,                 null],
+                ['Style Transfer Video',   'Projects',                8,       8,                 'select'],
                 ['Leigh Woods',            'Style Transfer Video',    8,       8,                 'https://www.youtube.com/watch?v=5PxW-6TYIF4'],
                 ['Bicycle Day',            'Style Transfer Video',    8,       8,                 '/bicycle_day/index.html'],
-                ['Video as Style',         'Style Transfer Video',    8,       8,                 null],
-                ['Video Creation',         'Projects',                8,       8,                 null],
+                ['Video as Style',         'Style Transfer Video',    8,       8,                 'none'],
+                ['Video Creation',         'Projects',                8,       8,                 'none'],
                 ['Feature Inversion',      'Projects',                4,       4,                 '/feature_inversion/index.html'],
-                ['Kaggle',                 'Projects',                3,       3,                 null],
-                ['Cell Segmentation',      'Kaggle',                  1,       1,                 null],
-                ['ARC',                    'Kaggle',                  3,       3,                 null],
-                ['Cellular Automata',      'Projects',                4,       4,                 null],
-                ['SmoothLife',             'Cellular Automata',       4,       4,                 null],
-                ['Shadertoy',              'Cellular Automata',       4,       4,                 null],
+                ['Kaggle',                 'Projects',                3,       3,                 'select'],
+                ['Cell Segmentation',      'Kaggle',                  1,       1,                 'none'],
+                ['ARC',                    'Kaggle',                  3,       3,                 'none'],
+                ['Cellular Automata',      'Projects',                4,       4,                 'select'],
+                ['SmoothLife',             'Cellular Automata',       4,       4,                 'https://github.com/dantreiman/convolving-automaton'],
+                ['Shadertoy',              'Cellular Automata',       4,       4,                 'https://www.shadertoy.com/user/sparrow'],
                 ['Neural CA',              'Cellular Automata',       4,       4,                 '/anura/index.html'],
             ]);
 
@@ -185,15 +185,17 @@
                 var selected = selection[0]
                 if (selected.row != null) {
                     var url = data.getFormattedValue(selected.row, 4);
-                    console.log(url);
-                    if (url == '') {
-                        return;
+                    if (url == 'none') {
+                        tree.setSelection([]);  // Leaf node without a link, do nothing.
+                    }
+                    else if (url == 'select') {
+                        return;  // Selectable leaf node, drill down.
                     }
                     else {
-                        go_to_link(url);
+                        go_to_link(url);  // Leaf node with a URL, follow the link
                     }
+                    tree.setSelection([]);  // Leaf node without a link, do nothing.
                 }
-                tree.setSelection([]);
             });
         }
         window.addEventListener('resize', drawTreeChart, false);
