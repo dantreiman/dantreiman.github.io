@@ -4,6 +4,7 @@ svg.timeline-chart {
     display: block;
     margin: auto;
     /*mix-blend-mode: multiply;*/
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
 }
 
 svg.timeline-chart g.bar text {
